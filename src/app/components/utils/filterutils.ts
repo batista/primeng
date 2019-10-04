@@ -2,7 +2,7 @@ import { ObjectUtils } from '../utils/objectutils';
 
 export class FilterUtils {
 
-    public static filter(value: any[], fields: any[], filterValue: string, filterMatchMode: string) {
+    public static filter(value: any[], fields: any[], filterValue: string, filterMatchMode: FilterMatchMode) {
         let filteredItems: any[] = [];
         let filterText = ObjectUtils.removeAccents(filterValue).toLowerCase();
 
@@ -175,3 +175,5 @@ export class FilterUtils {
             return value >= filter;
     }
 }
+
+export type FilterMatchMode = Exclude<keyof typeof FilterUtils, 'prototype' | 'filter'>;
